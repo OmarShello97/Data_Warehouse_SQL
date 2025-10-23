@@ -1,0 +1,120 @@
+============================================================
+DATA WAREHOUSE ANALYTICS - SQL PROJECT
+============================================================
+
+A comprehensive SQL analytics suite for business intelligence, 
+customer insights, and product performance analysis.
+
+============================================================
+PROJECT STRUCTURE
+============================================================
+
+datasets/
+    -- gold.dim_customers (Excel)
+    -- gold.dim_products (Excel)
+    -- gold.fact_sales (Excel)
+
+scripts/
+    -- 00_init_database.sql
+    -- 01_Exploratory_Data_Analysis.sql
+    -- 02_Advanced_Analysis.sql
+    -- 03_Customers_Report.sql
+    -- 04_Products_Report.sql
+    -- 05_Report_Queries.sql
+
+============================================================
+QUICK START
+============================================================
+
+Prerequisites:
+    - Microsoft SQL Server 2016 or higher
+    - Excel files from the datasets folder
+
+Setup Instructions:
+
+STEP 1: Update the file paths in 00_init_database.sql
+
+    Change these paths to match YOUR local directory:
+    
+    FROM 'C:\your\path\to\datasets\gold.dim_customers.csv'
+    FROM 'C:\your\path\to\datasets\gold.dim_products.csv'
+    FROM 'C:\your\path\to\datasets\gold.fact_sales.csv'
+
+STEP 2: Run the SQL files in order (00 to 05)
+
+    Order | File                              | Purpose
+    ------|-----------------------------------|----------------------------------
+    1     | 00_init_database.sql              | Creates database, tables, loads data
+    2     | 01_Exploratory_Data_Analysis.sql  | Initial data exploration and KPIs
+    3     | 02_Advanced_Analysis.sql          | Trends, YoY analysis, segmentation
+    4     | 03_Customers_Report.sql           | Creates customer analytics view
+    5     | 04_Products_Report.sql            | Creates product performance view
+    6     | 05_Report_Queries.sql             | Query the reporting views
+
+============================================================
+WHAT'S INCLUDED
+============================================================
+
+Exploratory Data Analysis:
+    - Database structure overview
+    - Key business metrics (sales, orders, customers)
+    - Distribution analysis by category, country, gender
+    - Top/bottom performers
+
+Advanced Analytics:
+    - Monthly/yearly sales trends and seasonality
+    - Month-over-month and year-over-year growth
+    - Running totals and moving averages
+    - Customer segmentation (age, lifecycle, spending)
+    - Product segmentation (cost, performance)
+
+Customer Report View:
+    - Customer lifetime value (CLV)
+    - RFM segmentation (Recency, Frequency, Monetary)
+    - Engagement status (Active, At Risk, Dormant, Churned)
+    - Purchase patterns and demographics
+
+Product Report View:
+    - Product performance metrics
+    - Profitability analysis (margins, pricing)
+    - Product lifecycle tracking
+    - Health scores and category rankings
+
+============================================================
+SAMPLE QUERIES
+============================================================
+
+Top 10 Products:
+
+    SELECT TOP 10 product_name, category, total_sales 
+    FROM gold.report_products
+    ORDER BY total_sales DESC;
+
+High-Value At-Risk Customers:
+
+    SELECT full_name, customer_lifetime_value, recency_months
+    FROM gold.report_customers
+    WHERE engagement_status = 'At Risk' 
+      AND value_tier = 'High Value';
+
+============================================================
+IMPORTANT NOTES
+============================================================
+
+WARNING: File 00_init_database.sql will DROP the existing 
+database if it exists. All data will be permanently deleted.
+
+    - Make sure to update CSV file paths before running 
+      the init script
+    - Run scripts in numerical order (00 through 05)
+    - Ensure you have proper backups before running
+
+============================================================
+LICENSE
+============================================================
+
+Open source - MIT License
+
+Questions? Open an issue or submit a pull request!
+
+============================================================
